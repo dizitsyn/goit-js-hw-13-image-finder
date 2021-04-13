@@ -1,0 +1,31 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 50px;
+  list-style: none;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+button {
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: flex;
+}
