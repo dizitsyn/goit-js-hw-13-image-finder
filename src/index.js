@@ -67,7 +67,7 @@ async function scroll()  {
         left: 0,
         behavior: 'smooth',
       });
-    }, 500);
+    }, 1000);
   } catch (error) {
     console.log(error);
   }
