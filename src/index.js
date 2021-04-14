@@ -2,6 +2,7 @@ import './styles.css';
 import markup from './templates/template.hbs';
 import Api from './js/apiService.js';
 import debounce from 'lodash.debounce'
+import { Promise } from 'core-js';
 
 const refs = {
     searchForm: document.querySelector('#search-form'),
@@ -28,13 +29,11 @@ function onSerch(e) {
     api.fetchPhotos().then(renderPhoto);    
 }
 
-function loadMore(e) {
+function loadMore() {
     api.increasePage()
     api.fetchPhotos().then(addPhoto);
-    window.scrollTo({
-        top:-1000,
-        behavior:'smooth'
-    })
+    
+   
     }
 
 function renderPhoto(photos) {
@@ -42,7 +41,8 @@ function renderPhoto(photos) {
 }
 
 function addPhoto(photos) {
-    refs.photoList.insertAdjacentHTML('beforeend', markup(photos)); 
+     refs.photoList.insertAdjacentHTML('beforeend', markup(photos));
+    scroll();
 }
 
 
@@ -58,3 +58,18 @@ function clean() {
     refs.photoList.innerHTML= '';
    
 }
+
+async function scroll()  {
+  try {
+    setTimeout(() => {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }, 500);
+  } catch (error) {
+    console.log(error);
+  }
+}
+    
